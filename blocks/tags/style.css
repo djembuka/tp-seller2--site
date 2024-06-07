@@ -1,0 +1,43 @@
+.slr2-tags-block {
+  --slr2-tags-border-width: 2px;
+  --slr2-tags-border-color: #000;
+  --slr2-tags-background-color: #000;
+  --slr2-tags-color: #fff;
+  --slr2-tags-font-size: 16px;
+  --slr2-tags-font-family: 'Open Sans';
+  --slr2-tags-align: flex-start; /*center, flex-end*/
+
+  /*если тип тэгов - "Кнопки сплошного цвета"
+  --slr2-tags-border-width: 0;*/
+
+  /*если тип тэгов - "Кнопка прозрачная с контуром"
+  --slr2-tags-background-color: transparent;*/
+
+  /*если тип тэгов - "Кнопка с цветом и контуром"*/
+}
+.slr2-tags-block__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: var(--slr2-tags-align);
+  align-items: flex-start;
+}
+
+.slr2-tags-block__item {
+  height: 44px;
+  padding: 0 32px;
+  border-radius: 22px;
+  border: var(--slr2-tags-border-width) solid var(--slr2-tags-border-color);
+  background-color: var(--slr2-tags-background-color);
+  color: var(--slr2-tags-color);
+  margin-right: 16px;
+  margin-bottom: 16px;
+  font-size: var(--slr2-tags-font-size);
+  font-family: var(--slr2-tags-font-family), Arial, sans-serif;
+  display: flex;
+  align-items: center;
+}
+a.slr2-tags-block__item,
+a.slr2-tags-block__item:hover {
+  color: var(--slr2-tags-color);
+  text-decoration: none;
+}

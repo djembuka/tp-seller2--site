@@ -1,0 +1,10 @@
+.slr2-header1 {
+  --slr2-header1-background-color: var(--slr2-color-primary);
+  --slr2-header1-link-color: #fff;
+  --slr2-header1-preloader-color: #ffffff33;
+  --slr2-header1-preloader-shine: #ffffff88;
+  --slr2-header1-basket-count-background: #fff;
+  --slr2-header1-basket-count-color: var(--slr2-color-primary);
+  --slr2-header1-menu-icon: #fff;
+  --slr2-header1-menu-icon-shadow: #ffffff99;
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Big gallery</title>
+    <link rel="stylesheet" href="swiper-bundle.min.css" />
+    <!-- Стили сайта и общие настройки -->
+    <link rel="stylesheet" href="../../site/css/styles.css" />
+    <!-- Цветовая схема сайта -->
+    <link rel="stylesheet" href="../../site/css/light.css" />
+    <link rel="stylesheet" href="../../site/css/dark.css" />
+    <!-- Стили блока -->
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      :root {
+        --slr2-color-primary: #ff7865;
+        --slr2-blocks-radius: 8px;
+      }
+    </style>
+    <style>
+      .slr-big-gallery .swiper-timer--animate {
+        -webkit-transition-duration: 5s;
+        transition-duration: 5s;
+      }
+    </style>
+  </head>
+  <body style="padding: 0; margin: 0">
+    <div
+      class="slr2-big-gallery"
+      style="min-height: 500px; background-color: #f2f2f2"
+    >
+      <div class="swiper" data-delay="5000">
+        <div class="swiper-wrapper">
+          <a href="" class="swiper-slide"
+            ><picture>
+              <source media="(min-width: 768px)" srcset="images/1.jpg" />
+              <source media="(max-width: 767px)" srcset="images/10.jpg" />
+              <img src="images/1.jpg" alt="" class="swiper-lazy" />
+              <span class="swiper-lazy-preloader"></span>
+            </picture>
+          </a>
+          <a href="" class="swiper-slide"
+            ><picture>
+              <source media="(min-width: 768px)" srcset="images/2.jpg" />
+              <source media="(max-width: 767px)" srcset="images/9.jpg" />
+              <img src="images/1.jpg" alt="" class="swiper-lazy" />
+              <span class="swiper-lazy-preloader"></span>
+            </picture>
+          </a>
+          <a href="" class="swiper-slide"
+            ><picture>
+              <source media="(min-width: 768px)" srcset="images/3.jpg" />
+              <source media="(max-width: 767px)" srcset="images/8.jpg" />
+              <img src="images/1.jpg" alt="" class="swiper-lazy" />
+              <span class="swiper-lazy-preloader"></span>
+            </picture>
+          </a>
+          <a href="" class="swiper-slide"
+            ><picture>
+              <source media="(min-width: 768px)" srcset="images/4.jpg" />
+              <source media="(max-width: 767px)" srcset="images/7.jpg" />
+              <img src="images/1.jpg" alt="" class="swiper-lazy" />
+              <span class="swiper-lazy-preloader"></span>
+            </picture>
+          </a>
+          <a href="" class="swiper-slide"
+            ><picture>
+              <source media="(min-width: 768px)" srcset="images/5.jpg" />
+              <source media="(max-width: 767px)" srcset="images/6.jpg" />
+              <img src="images/1.jpg" alt="" class="swiper-lazy" />
+              <span class="swiper-lazy-preloader"></span>
+            </picture>
+          </a>
+          <a href="" class="swiper-slide"
+            ><picture>
+              <source media="(min-width: 768px)" srcset="images/6.jpg" />
+              <source media="(max-width: 767px)" srcset="images/5.jpg" />
+              <img src="images/1.jpg" alt="" class="swiper-lazy" />
+              <span class="swiper-lazy-preloader"></span>
+            </picture>
+          </a>
+          <a href="" class="swiper-slide"
+            ><picture>
+              <source media="(min-width: 768px)" srcset="images/7.jpg" />
+              <source media="(max-width: 767px)" srcset="images/4.jpg" />
+              <img src="images/1.jpg" alt="" class="swiper-lazy" />
+              <span class="swiper-lazy-preloader"></span>
+            </picture>
+          </a>
+          <a href="" class="swiper-slide"
+            ><picture>
+              <source media="(min-width: 768px)" srcset="images/8.jpg" />
+              <source media="(max-width: 767px)" srcset="images/3.jpg" />
+              <img src="images/1.jpg" alt="" class="swiper-lazy" />
+              <span class="swiper-lazy-preloader"></span>
+            </picture>
+          </a>
+          <a href="" class="swiper-slide"
+            ><picture>
+              <source media="(min-width: 768px)" srcset="images/9.jpg" />
+              <source media="(max-width: 767px)" srcset="images/2.jpg" />
+              <img src="images/1.jpg" alt="" class="swiper-lazy" />
+              <span class="swiper-lazy-preloader"></span>
+            </picture>
+          </a>
+          <a href="" class="swiper-slide"
+            ><picture>
+              <source media="(min-width: 768px)" srcset="images/10.jpg" />
+              <source media="(max-width: 767px)" srcset="images/1.jpg" />
+              <img src="images/1.jpg" alt="" class="swiper-lazy" />
+              <span class="swiper-lazy-preloader"></span>
+            </picture>
+          </a>
+        </div>
+
+        <div class="swiper-pagination"></div>
+
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <div class="swiper-timer"></div>
+      </div>
+    </div>
+
+    <script src="swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

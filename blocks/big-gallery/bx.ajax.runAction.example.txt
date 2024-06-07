@@ -1,0 +1,114 @@
+{
+    id: '111',
+    name: 'Баннер',
+    description:
+      'Галерея с картинками-баннерами',
+    preview: 'upload/block.png',
+    settings: {
+      enabled: true,
+    },
+    activeVariant: '1111',
+    variants: [
+      {
+        id: '1111',
+        name: 'Баннер 1',
+        description:
+          'В качестве баннеров выводятся только картинки, без надписей',
+        preview: 'upload/block.png',
+        settings: {
+          properties: [
+            {
+              property: 'text',
+              id: 'id1',
+              name: 'BANNER_HEIGHT',
+              label: 'Высота баннера',
+              value: '500',
+              regexp: '^(\d+)$',
+              regexp_description:
+                'Значение поля - любое число',
+              hint_internal: 'Введите любое число',
+              hint_external: 'Высота баннера в px, например 500',
+            },
+            {
+              property: 'text',
+              id: 'id1',
+              name: 'BUTTONS_SIZE',
+              label: 'Стрелки вправо-влево, размер',
+              value: '16',
+              regexp: '^(\d+)$',
+              regexp_description:
+                'Значение поля - любое число',
+              hint_internal: 'Введите любое число',
+              hint_external: 'Размер стрелок, например 16',
+            },
+            {
+              property: 'heading',
+              id: 'idH0',
+              label: 'Стрелки вправо-влево, цвет',
+            },
+            {
+              property: 'color',
+              id: 'id45',
+              label: 'Стрелки вправо-влево, цвет',
+              name: 'BUTTONS_COLOR',
+              value: '#CC3399',
+              primary: '#ff33bb',
+              secondary: '#a3ff33',
+              hint_external: 'Цвет стрелок',
+            },
+            {
+              property: 'heading',
+              id: 'idH0',
+              label: 'Цвет указателя времени',
+            },
+            {
+              property: 'color',
+              id: 'id45',
+              label: 'Цвет указателя времени',
+              name: 'TIMER_COLOR',
+              value: '#CC3399',
+              primary: '#ff33bb',
+              secondary: '#a3ff33',
+              hint_external: 'Цвет указателя времени',
+            },
+            {
+              property: 'text',
+              id: 'id1',
+              name: 'TIMER_WIDTH',
+              label: 'Толщина указателя времени',
+              value: '1',
+              regexp: '^(\d+)$',
+              regexp_description:
+                'Значение поля - любое число',
+              hint_internal: 'Введите любое число',
+              hint_external: 'Толщина указателя времени в px, например 1',
+            },
+            {
+              property: 'text',
+              id: 'id1',
+              name: 'SWIPER_DELAY',
+              label: 'Задержка между слайдами',
+              value: '3000',
+              regexp: '^(\d+)$',
+              regexp_description:
+                'Значение поля - любое число',
+              hint_internal: 'Введите любое число',
+              hint_external: 'Задержка между слайдами в ms, например 3000',
+            },
+            {
+              property: 'text',
+              id: 'id1',
+              name: 'BANNER_RADIUS',
+              label: 'Скругление углов',
+              value: '10',
+              regexp: '^(\d+)$',
+              regexp_description:
+                'Значение поля - любое число',
+              hint_internal: 'Введите любое число',
+              hint_external: 'Скругление углов, например 10',
+            },
+          ],
+        },
+      }
+    ],
+  },

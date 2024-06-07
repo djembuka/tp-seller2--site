@@ -1,0 +1,187 @@
+{
+    id: '111',
+    name: 'Тэги 1',
+    description:
+      'Блок с тэгами-ссылками',
+    preview: 'upload/block.png',
+    settings: {
+      enabled: true,
+    },
+    activeVariant: '1111',
+    variants: [
+      {
+        id: '1111',
+        name: 'Тэги 1',
+        description: 'Простые тэги',
+        preview: 'upload/block.png',
+        settings: {
+          properties: [
+            {
+                property: 'heading',
+                id: 'id_tags_background_heading',
+                label: 'Цвет фона',
+            },
+            {
+                property: 'color',
+                id: 'id_tags_background_color',
+                label: 'Цвет фона',
+                name: 'BACKGROUND_COLOR',
+                required: true,
+                value: '#000000',
+            },
+            {
+                property: 'heading',
+                id: 'id_tags_text_heading',
+                label: 'Цвет текста',
+            },
+            {
+                property: 'color',
+                id: 'id_tags_text_color',
+                label: 'Цвет текста',
+                name: 'TEXT_COLOR',
+                required: true,
+                value: '#ffffff',
+            },
+            {
+                property: 'heading',
+                id: 'id_tags_border_heading',
+                label: 'Цвет контура',
+            },
+            {
+                property: 'color',
+                id: 'id_tags_border_color',
+                label: 'Цвет контура',
+                name: 'BORDER_COLOR',
+                required: true,
+                value: '#000000',
+            },
+            {
+              property: 'text',
+              id: 'id1',
+              name: 'BORDER_WIDTH',
+              label: 'Толщина контура',
+              value: '0',
+              regexp: '^(\d+)$',
+              regexp_description:
+                'Значение поля - любое число',
+              hint_internal: 'Введите любое число',
+              hint_external: 'Толщина контура, например 1',
+            },
+            {
+              property: 'text',
+              id: 'id1',
+              name: 'BORDER_WIDTH',
+              label: 'Толщина контура',
+              value: '0',
+              regexp: '^(\d+)$',
+              regexp_description:
+                'Значение поля - любое число',
+              hint_internal: 'Введите любое число',
+              hint_external: 'Толщина контура, например 1',
+            },
+            {
+            property: 'select',
+            type: 'dropdown',
+            id: 'id1',
+            name: 'FONT_FAMILY',
+            label: 'Шрифт',
+            options: [
+                {
+                label: 'Roboto',
+                code: 'roboto',
+                },
+                {
+                label: 'Open Sans',
+                code: 'open-sans',
+                },
+                {
+                label: 'Arial Narrow',
+                code: 'arial-narrow',
+                },
+            ],
+            value: 'roboto',
+            disabled: false,
+            hint_external:
+                'Введите подсказку для этого блока, которая может быть очень длинная, но мы не будем ее выводить всегда, иногда подсказки не будет совсем.',
+            },
+            {
+                property: 'text',
+                id: 'id_font_size',
+                name: 'FONT_SIZE',
+                label: 'Размер шрифта',
+                value: '',
+                regexp: 'dd',
+                regexp_description: 'Значение поля должно быть числом',
+                hint_internal: 'Введите число',
+                hint_external: 'Например 14 или 18',
+            },
+            {
+                property: 'text',
+                id: 'id_font_width',
+                name: 'FONT_WIDTH',
+                label: 'Толщина текста',
+                value: '',
+                regexp: 'ddd',
+                regexp_description: 'Значение поля должно быть числом',
+                hint_internal: 'Введите число',
+                hint_external: 'Например 400 или 700',
+            },
+            {
+                property: 'heading',
+                id: 'id_tags_align_heading',
+                label: 'Выравнивание:',
+            },
+            {
+                property: 'select',
+                type: 'radio',
+                id: 'id_tags_align_radio',
+                name: 'ALIGN',
+                label: 'Выравнивание',
+                options: [
+                    {
+                        label: 'По левому краю',
+                        code: '1',
+                    },
+                    {
+                        label: 'По центру',
+                        code: '2',
+                    },
+                    {
+                        label: 'По правому краю',
+                        code: '3',
+                    },
+                ],
+                value: '1',
+            },
+            {
+                property: 'heading',
+                id: 'id_tags_type_heading',
+                label: 'Типы тэгов:',
+            },
+            {
+                property: 'select',
+                type: 'radio',
+                id: 'id_tags_type_radio',
+                name: 'TYPE',
+                label: 'Типы тэгов',
+                options: [
+                    {
+                        label: 'Кнопки сплошного цвета',
+                        code: '1',
+                    },
+                    {
+                        label: 'Кнопка прозрачная с контуром',
+                        code: '2',
+                    },
+                    {
+                        label: 'Кнопка с цветом и контуром',
+                        code: '3',
+                    },
+                ],
+                value: '1',
+            },
+          ],
+        },
+      }
+    ],
+  },

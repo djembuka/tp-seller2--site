@@ -1,0 +1,204 @@
+.slr2-header1 {
+  background-color: var(--slr2-header1-background-color);
+  height: 64px;
+  margin-bottom: 32px;
+}
+.slr2-header1 .slr2-container {
+  height: 100%;
+}
+.slr2-header1__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+.slr2-header1__left {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.slr2-header1__logo {
+  display: block;
+  margin-right: 64px;
+}
+.slr2-header1__menu {
+  display: none;
+  width: 100%;
+}
+.slr2-header1__menu menu {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  height: 32px;
+}
+.slr2-header1__menu-item {
+  margin-right: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  visibility: hidden;
+}
+.slr2-header1__menu-item--visible {
+  visibility: visible;
+}
+.slr2-header1__menu-item--hidden {
+  display: none;
+}
+.slr2-header1__menu a,
+.slr2-header1__menu a:hover,
+.slr2-header1__menu a:visited {
+  color: var(--slr2-header1-link-color);
+}
+.slr2-header1__menu .slr2-header1__menu-icon {
+  margin-right: 64px;
+  flex-shrink: 0;
+}
+/*Icons*/
+.slr2-header1__icons {
+  display: grid;
+  grid-template-columns: repeat(3, 32px);
+  gap: 32px;
+}
+.slr2-header1__menu-icon,
+.slr2-header1__mobile-menu-icon,
+.slr2-header1__profile-icon,
+.slr2-header1__basket-icon,
+.slr2-header1__search-icon,
+.slr2-header1__phone-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  -webkit-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+}
+.slr2-header1__profile-icon,
+.slr2-header1__search-icon {
+  display: none;
+}
+.slr2-header1__menu-icon:hover,
+.slr2-header1__mobile-menu-icon:hover,
+.slr2-header1__profile-icon:hover,
+.slr2-header1__basket-icon:hover,
+.slr2-header1__search-icon:hover,
+.slr2-header1__phone-icon:hover {
+  opacity: 0.7;
+}
+.slr2-header1__menu-icon img,
+.slr2-header1__mobile-menu-icon img,
+.slr2-header1__profile-icon img,
+.slr2-header1__basket-icon img,
+.slr2-header1__search-icon img,
+.slr2-header1__phone-icon img {
+  width: 32px;
+  height: 32px;
+}
+
+.slr2-header1__basket-icon {
+  flex-direction: column;
+}
+.slr2-header1__basket-icon img {
+  width: 20px;
+  height: 20px;
+}
+.slr2-header1__basket-icon span {
+  background-color: var(--slr2-header1-basket-count-background);
+  border-radius: 5px;
+  padding: 0 5px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  color: var(--slr2-header1-basket-count-color);
+  font-family: 'Open Sans';
+  font-size: 7px;
+  font-weight: 700;
+  line-height: 10px;
+  margin-top: 2px;
+  height: 10px;
+}
+.slr2-header1__basket-icon.slr2-header1__basket-full span {
+  display: flex;
+}
+
+.slr2-header1__phone-icon {
+  order: 1;
+}
+.slr2-header1__basket-icon {
+  order: 2;
+}
+.slr2-header1__mobile-menu-icon {
+  order: 3;
+}
+
+.slr2--icon-preloader {
+  background-color: var(--slr2-header1-preloader-color);
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: default;
+  background: linear-gradient(
+    45deg,
+    var(--slr2-header1-preloader-color),
+    var(--slr2-header1-preloader-shine),
+    var(--slr2-header1-preloader-color)
+  );
+  background-size: 400% 400%;
+  animation: gradient 2s ease infinite;
+  transform: translate3d(0, 0, 0);
+  pointer-events: none;
+}
+.slr2--icon-preloader:hover {
+  opacity: 1;
+}
+.slr2--icon-preloader img {
+  display: none !important;
+}
+
+.slr2-header1__phone-icon {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.slr2-header1__phone-icon:hover {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+@media (min-width: 768px) {
+  .slr2-header1__menu {
+    display: flex;
+  }
+  .slr2-header1__icons {
+    grid-template-columns: repeat(4, 32px);
+  }
+  .slr2-header1__mobile-menu-icon {
+    display: none;
+  }
+  .slr2-header1__profile-icon {
+    order: 1;
+    display: flex;
+  }
+  .slr2-header1__basket-icon {
+    order: 2;
+  }
+  .slr2-header1__search-icon {
+    order: 3;
+    display: flex;
+  }
+  .slr2-header1__phone-icon {
+    order: 4;
+  }
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

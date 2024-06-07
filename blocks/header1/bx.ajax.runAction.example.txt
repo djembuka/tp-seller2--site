@@ -1,0 +1,145 @@
+{
+    id: '111',
+    name: 'Шапка 1',
+    description:
+      'Шапка сайта с меню и иконками',
+    preview: 'upload/block.png',
+    settings: {
+      enabled: true,
+    },
+    activeVariant: '1111',
+    variants: [
+      {
+        id: '1111',
+        name: 'Шапка 1',
+        description:
+          'Логотип и меню слева, иконки справа.',
+        preview: 'upload/block.png',
+        settings: {
+          properties: [
+            {
+                property: 'heading',
+                id: 'id_header1_theme_heading',
+                label: 'Тема оформления:',
+            },
+            {
+                property: 'select',
+                type: 'radio',
+                id: 'id_header1_theme_radio',
+                name: 'THEME',
+                label: 'Тема',
+                options: [
+                    {
+                        label: 'Светлая тема',
+                        code: '1',
+                    },
+                    {
+                        label: 'Темная тема',
+                        code: '2',
+                    },
+                ],
+                value: '2',
+            },
+            {
+                property: 'heading',
+                id: 'id_header1_background_heading',
+                label: 'Цвет фона',
+            },
+            {
+                property: 'color',
+                id: 'id_header1_background_color',
+                label: 'Цвет фона',
+                name: 'BACKGROUND_COLOR',
+                required: true,
+                value: '#CC33CC',
+            },
+            {
+                property: 'heading',
+                id: 'id_header1_anchors_heading',
+                label: 'Цвет ссылок',
+            },
+            {
+                property: 'color',
+                id: 'id_header1_anchors_color',
+                label: 'Цвет ссылок',
+                name: 'ANCHORS_COLOR',
+                required: true,
+                value: '#CC33CC',
+            },
+            {
+                property: 'heading',
+                id: 'id_header1_menu_heading',
+                label: 'Показывать доп. меню',
+            },
+            {
+                property: 'checkbox',
+                type: 'switch',
+                id: 'id_header1_menu',
+                name: 'MENU_SWITCH',
+                required: false,
+                label:
+                'labore voluptate dolores magnam ea non sunt sint facere velit, harum illum?',
+                value: 'on',
+                checked: true,
+                disabled: false,
+                hint_external: '',
+            },
+            {
+                property: 'heading',
+                id: 'id_header1_fixed_heading',
+                label: 'Фиксированная шапка сайта',
+            },
+            {
+                property: 'checkbox',
+                type: 'switch',
+                id: 'id_header1_fixed',
+                name: 'FIXED_SWITCH',
+                required: false,
+                label:
+                'labore voluptate dolores magnam ea non sunt sint facere velit, harum illum?',
+                value: 'on',
+                checked: true,
+                disabled: false,
+                hint_external: '',
+            },
+            {
+                property: 'heading',
+                id: 'id_header1_search_heading',
+                label: 'Поиск',
+            },
+            {
+                property: 'checkbox',
+                type: 'switch',
+                id: 'id_header1_search',
+                name: 'SEARCH_SWITCH',
+                required: false,
+                label:
+                'labore voluptate dolores magnam ea non sunt sint facere velit, harum illum?',
+                value: 'on',
+                checked: true,
+                disabled: false,
+                hint_external: '',
+            },
+            {
+                property: 'heading',
+                id: 'id_header1_phone_heading',
+                label: 'Телефон',
+            },
+            {
+                property: 'checkbox',
+                type: 'switch',
+                id: 'id_header1_phone',
+                name: 'PHONE_SWITCH',
+                required: false,
+                label:
+                'labore voluptate dolores magnam ea non sunt sint facere velit, harum illum?',
+                value: 'on',
+                checked: true,
+                disabled: false,
+                hint_external: '',
+            },
+          ],
+        },
+      }
+    ],
+  },

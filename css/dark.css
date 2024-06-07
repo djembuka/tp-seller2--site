@@ -1,0 +1,9 @@
+:root {
+  --slr2-color-primary: #0a16aa;
+  --slr2-color-secondary: #fff;
+  --slr2-color-tertiary: #000;
+
+  --slr2-background-color: var(--slr2-color-tertiary);
+  --slr2-text-color: var(--slr2-color-secondary);
+  --slr2-link-color: var(--slr2-color-primary);
+}
