@@ -1,4 +1,4 @@
-class slr2Header1 {
+class Slr2Header1 {
   constructor(elem) {
     this.header = elem;
     this.menu = this.header.querySelector('.slr2-header1__menu');
@@ -72,7 +72,7 @@ class slr2Header1 {
 }
 
 window.addEventListener('load', () => {
-  const slr2Header1Elem = new slr2Header1(
+  const slr2Header1Elem = new Slr2Header1(
     document.querySelector('.slr2-header1')
   );
 });
