@@ -1,32 +1,32 @@
 (() => {
   const componentObj = {
-    name: 'slr2SearchComponent',
+    name: 'search',
     event: 'slr2SearchLoaded',
+    component: 'slr2SearchComponent',
     method: 'show',
   };
 
   setTimeout(() => {
-    const event = new Event(componentObj.event);
-    document.documentElement.dispatchEvent(event);
-
-    window[componentObj.name] = {};
-    fetchHeaderSearch();
-
-    window[componentObj.name][componentObj.method] = function () {
-      componentObj.inst.show();
-    };
+    fetchComponent();
   }, 2000);
 
-  async function fetchHeaderSearch() {
-    const response = await fetch('/components/header.search/template.html');
+  async function fetchComponent() {
+    const response = await fetch('/components/search/template.html');
     const result = await response.text();
 
+    //загружаем и добавляем на страницу html, css
     const div = document.createElement('div');
+    div.id = 'slr2SearchElem';
     div.innerHTML = result;
 
     document.querySelector('body').append(div);
 
-    class Slr2Search {
+    //вызываем событие при загрузке компонента,
+    //теперь на кнопку можно нажать
+    const event = new Event(componentObj.event);
+    document.documentElement.dispatchEvent(event);
+
+    class slr2SearchComponent {
       constructor(elem) {
         this.elem = elem;
         this.wrapper = this.elem.querySelector('.slr2-search-wrapper');
@@ -96,7 +96,8 @@
       }
     }
 
-    componentObj.inst = new Slr2Search(
+    //добавляем экземпляр класса в глобальное пространство
+    window.seller2[componentObj.component] = new slr2SearchComponent(
       document.getElementById('slr2SearchElem')
     );
   }

@@ -434,3 +434,15 @@ menu {
   font-weight: var(--slr2-button-text);
   border-radius: var(--slr2-button-radius);
 }
+
+/*элементы вызова компонентов*/
+[data-slr2toggle] {
+  pointer-events: none;
+  opacity: 0.5;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+}
+.slr2--component-loaded[data-slr2toggle] {
+  pointer-events: auto;
+  opacity: 1;
+}

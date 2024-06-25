@@ -33,7 +33,10 @@
                 <a href="" class="slr2-header1__menu-item">Оплата</a>
                 <a href="" class="slr2-header1__menu-item">Магазины</a>
               </menu>
-              <div class="slr2-header1__menu-icon slr2--icon-preloader">
+              <div
+                id="toggleTwpxMobileMenu"
+                class="slr2-header1__menu-icon slr2--icon-preloader"
+              >
                 <img
                   src="../../blocks/header1/images/dark-theme/menu-icon.svg"
                   alt="Меню"
@@ -68,7 +71,10 @@
                   alt="Личный кабинет"
                 />
               </div>
-              <div class="slr2-header1__search-icon slr2--icon-preloader">
+              <div
+                class="slr2-header1__search-icon slr2--icon-preloader"
+                data-slr2toggle="search"
+              >
                 <img
                   src="../../blocks/header1/images/dark-theme/search-icon.svg"
                   alt="Поиск"
@@ -84,9 +90,9 @@
 
     <script src="../../blocks/header1/js/basket-component.js"></script>
     <script src="../../blocks/header1/js/menu-component.js"></script>
-    <script src="../../blocks/header1/js/mobile-menu-component.js"></script>
+    <script src="../../components/mobile-menu/script.js"></script>
     <script src="../../blocks/header1/js/phone-component.js"></script>
-    <script src="../../components/header.search/script.js"></script>
+    <script src="../../components/search/script.js"></script>
     <script src="../../blocks/header1/js/profile-component.js"></script>
 
     <!-- _Header 1_ -->
@@ -100,6 +106,7 @@
           размер шрифта, ширина контейнера, шрифт и скругление кнопок, размеры
           основных заголовков h1 - h4.
         </p>
+        <p><a href="#" data-slr2toggle="search">Вызов поиска</a></p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quis
         facere rem aliquam omnis velit dicta cumque accusantium explicabo quasi
         autem neque ullam amet sequi repudiandae consequatur dolorum, qui vel
@@ -332,5 +339,13 @@
     <script src="../../blocks/big-gallery/swiper-bundle.min.js"></script>
     <script src="../../blocks/big-gallery/script.js"></script>
     <!-- _Big gallery_ -->
+
+    <div id="twpxMobileMenu" data-url="/components/mobile-menu/response.html">
+      <div class="twpx-mobile-menu">
+        <div class="twpx-mobile-menu__title"></div>
+      </div>
+    </div>
+
+    <script src="../../js/script.js"></script>
   </body>
 </html>
