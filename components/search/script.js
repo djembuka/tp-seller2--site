@@ -15,13 +15,18 @@
     const result = await response.text();
 
     //загружаем и добавляем на страницу html, css
+    //обёртка, чтобы не было видно html до загрузки стилей
     const div = document.createElement('div');
-    div.id = 'slr2SearchElem';
-    div.style.opacity = '0';
+    div.className = 'slr2-search-component-container';
     div.style.position = 'absolute';
+    div.style.opacity = '0';
     div.style.zIndex = '-1';
-    div.innerHTML = result;
 
+    const elem = document.createElement('div');
+    elem.id = 'slr2SearchElem';
+    elem.innerHTML = result;
+
+    div.append(elem);
     document.querySelector('body').append(div);
 
     //вызываем событие при загрузке компонента,
@@ -29,7 +34,7 @@
     const event = new Event(componentObj.event);
     document.documentElement.dispatchEvent(event);
 
-    class slr2SearchComponent {
+    class Slr2SearchComponent {
       constructor(elem) {
         this.elem = elem;
         this.wrapper = this.elem.querySelector('.slr2-search-wrapper');
@@ -100,7 +105,7 @@
     }
 
     //добавляем экземпляр класса в глобальное пространство
-    window.seller2[componentObj.component] = new slr2SearchComponent(
+    window.seller2[componentObj.component] = new Slr2SearchComponent(
       document.getElementById('slr2SearchElem')
     );
   }

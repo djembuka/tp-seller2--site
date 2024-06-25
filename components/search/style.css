@@ -1,16 +1,21 @@
+.slr2-search-component-container {
+  position: static !important;
+  opacity: 1 !important;
+  z-index: 0 !important;
+}
 #slr2SearchElem {
   pointer-events: none;
   opacity: 0;
   -webkit-transition: opacity 0.3 ease;
   transition: opacity;
   -webkit-transition: opacity;
-  position: relative !important;
+  position: relative;
   z-index: -1;
 }
 #slr2SearchElem.slr2-search--show {
   pointer-events: auto;
-  opacity: 1 !important;
-  z-index: 10000 !important;
+  opacity: 1;
+  z-index: 10000;
 }
 #slr2SearchElem .slr2-search-wrapper {
   position: fixed;
