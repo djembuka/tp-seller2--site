@@ -11,12 +11,15 @@
   }, 2000);
 
   async function fetchComponent() {
-    const response = await fetch('/components/search/template.html');
+    const response = await fetch('../../components/search/template.html');
     const result = await response.text();
 
     //загружаем и добавляем на страницу html, css
     const div = document.createElement('div');
     div.id = 'slr2SearchElem';
+    div.style.opacity = '0';
+    div.style.position = 'absolute';
+    div.style.zIndex = '-1';
     div.innerHTML = result;
 
     document.querySelector('body').append(div);
