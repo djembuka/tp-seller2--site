@@ -389,6 +389,13 @@ h4 {
   font-size: var(--slr2-h4-size);
 }
 
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child {
+  margin-top: 0;
+}
+
 a,
 a:hover,
 a:visited {
@@ -445,4 +452,25 @@ menu {
 .slr2--component-loaded[data-slr2toggle] {
   pointer-events: auto;
   opacity: 1;
+}
+
+/*slide toggle effect*/
+.slr2-slide-toggle {
+  display: block;
+  opacity: 1;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  overflow: hidden;
+}
+.slr2-slide-toggle:not(.slr2-slide-toggle--show) {
+  opacity: 0;
+  display: none;
+}
+.slr2-slide-toggle.slr2-slide-toggle--show {
+  display: block !important;
+}
+
+/*body no scroll*/
+body.slr2-body--no-scroll {
+  overflow: hidden;
 }
