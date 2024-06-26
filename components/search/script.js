@@ -19,6 +19,11 @@
     const div = document.createElement('div');
     div.className = 'slr2-search-component-container';
     div.style.position = 'absolute';
+    div.style.top = '0';
+    div.style.left = '0';
+    div.style.width = '0';
+    div.style.height = '0';
+    div.style.overflow = 'hidden';
     div.style.opacity = '0';
     div.style.zIndex = '-1';
 

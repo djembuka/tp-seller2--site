@@ -458,8 +458,8 @@ menu {
 .slr2-slide-toggle {
   display: block;
   opacity: 1;
-  transition: all 0.3s ease;
-  -webkit-transition: all 0.3s ease;
+  transition: height 0.3s ease;
+  -webkit-transition: height 0.3s ease;
   overflow: hidden;
 }
 .slr2-slide-toggle:not(.slr2-slide-toggle--show) {

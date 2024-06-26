@@ -1,5 +1,8 @@
 .slr2-search-component-container {
   position: static !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
   opacity: 1 !important;
   z-index: auto !important;
 }
