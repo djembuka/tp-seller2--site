@@ -3,7 +3,7 @@
     name: 'mobile-menu',
     event: 'slr2MobileMenuLoaded',
     component: 'slr2MobileMenuComponent',
-    method: 'show',
+    method: 'toggle',
   };
 
   let fetchFlag;
@@ -61,9 +61,33 @@
       this.itemActiveToggle(item);
     }
 
+    toggle() {
+      !this.elem.classList.contains('slr2-mobile-menu--show')
+        ? this.show()
+        : this.hide();
+    }
+
     show() {
-      this.elem.classList.toggle('slr2-mobile-menu--show');
-      document.querySelector('body').classList.toggle('slr2-body--no-scroll');
+      //let the site know, that the new component is going to be shown
+      const event = new CustomEvent('slr2NewComponentIsShown', {
+        detail: {
+          name: 'mobile-menu',
+        },
+      });
+      document.documentElement.dispatchEvent(event);
+
+      this.elem.classList.add('slr2-mobile-menu--show');
+      document.querySelector('body').classList.add('slr2-body--no-scroll');
+
+      //deactivate items
+      this.mmItems.forEach((item) => {
+        this.itemActiveRemove(item);
+      });
+    }
+
+    hide() {
+      this.elem.classList.remove('slr2-mobile-menu--show');
+      document.querySelector('body').classList.remove('slr2-body--no-scroll');
 
       //deactivate items
       this.mmItems.forEach((item) => {

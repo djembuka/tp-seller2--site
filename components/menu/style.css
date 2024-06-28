@@ -26,13 +26,13 @@
   z-index: 10;
 }
 .slr2-menu-grid-container {
+  padding: 32px 164px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 30px;
 }
 .slr2-menu-grid-item {
   border: 1px solid #ccc;
-  padding: 10px;
 }
 .slr2-menu-h3 {
   color: #fff;

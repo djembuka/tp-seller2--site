@@ -13,13 +13,13 @@ window.seller2.toggleButtons = () => {
       name: c,
       event: `slr2${className(c)}Loaded`,
       component: `slr2${className(c)}Component`,
-      method: 'show',
+      method: 'toggle',
     };
   });
 
   //после загрузки компонента будет вызвана функция onComponentLoaded
   icons.forEach((iconObj) => {
-    if (window[`Slr2${className(iconObj.name)}`]) {
+    if (window.seller2[iconObj.component]) {
       onComponentLoaded(iconObj);
     } else {
       document.documentElement.addEventListener(iconObj.event, () => {
@@ -60,6 +60,27 @@ window.seller2.toggleButtons = () => {
     });
   }
 };
+
+document.documentElement.addEventListener('slr2NewComponentIsShown', (e) => {
+  if (e.detail.name !== 'search') {
+    window.seller2.slr2SearchComponent.hide();
+  }
+  if (e.detail.name !== 'profile') {
+    window.seller2.slr2ProfileComponent.hide();
+  }
+  if (e.detail.name !== 'menu') {
+    window.seller2.slr2MenuComponent.hide();
+  }
+  if (e.detail.name !== 'mobile-menu') {
+    window.seller2.slr2MobileMenuComponent.hide();
+  }
+  if (e.detail.name !== 'basket') {
+    window.seller2.slr2BasketComponent.hide();
+  }
+  if (e.detail.name !== 'phone') {
+    window.seller2.slr2PhoneComponent.hide();
+  }
+});
 
 window.addEventListener('DOMContentLoaded', () => {
   window.seller2.toggleButtons();
