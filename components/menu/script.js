@@ -26,7 +26,7 @@
       //let the site know, that the new component is going to be shown
       const event = new CustomEvent('slr2NewComponentIsShown', {
         detail: {
-          name: 'profile',
+          name: 'menu',
         },
       });
       document.documentElement.dispatchEvent(event);
@@ -133,14 +133,14 @@
     div.append(elem);
     document.querySelector('body').append(div);
 
-    //вызываем событие при загрузке компонента,
-    //теперь на кнопку можно нажать
-    const event = new Event(componentObj.event);
-    document.documentElement.dispatchEvent(event);
-
     //добавляем экземпляр класса в глобальное пространство
     window.seller2[componentObj.component] = new Slr2MenuComponent(
       document.getElementById('slr2MenuElem')
     );
+
+    //вызываем событие при загрузке компонента,
+    //теперь на кнопку можно нажать
+    const event = new Event(componentObj.event);
+    document.documentElement.dispatchEvent(event);
   }
 })();

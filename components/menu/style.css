@@ -25,28 +25,17 @@
   color: #fff;
   z-index: 10;
 }
-.slr2-menu-grid-container {
+.slr2-menu-content {
   padding: 32px 164px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
 }
-.slr2-menu-grid-item {
-  border: 1px solid #ccc;
-}
-.slr2-menu-h3 {
-  color: #fff;
-  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-  font-size: 18px;
+.slr2-menu-content__item {
+  position: relative;
   margin-bottom: 15px;
 }
-.slr2-menu-grid-item a {
-  display: block;
+.slr2-menu-content__item a,
+.slr2-menu-content__item span {
   color: #fff;
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-size: 14px;
-  margin-bottom: 15px;
-}
-.slr2-menu-grid-item a:last-child {
-  margin-bottom: 0;
+  display: inline-block;
 }

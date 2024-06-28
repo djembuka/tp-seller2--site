@@ -1,68 +1,23 @@
 (() => {
   const componentObj = {
-    name: 'mobile-menu',
-    event: 'slr2MobileMenuLoaded',
-    component: 'slr2MobileMenuComponent',
+    name: 'menu',
+    event: 'slr2CatalogMenuLoaded',
+    component: 'slr2CatalogMenuComponent',
     method: 'toggle',
   };
-
-  let fetchFlag;
 
   setTimeout(() => {
     fetchComponent();
   }, 2000);
 
-  window.addEventListener('resize', () => {
-    fetchComponent();
-  });
-
-  class Slr2MobileMenuComponent {
+  class slr2CatalogMenuComponent {
     constructor(elem) {
       this.elem = elem;
-      this.elements();
-      this.events();
-    }
-
-    elements() {
-      this.mmItems = this.elem.querySelectorAll('.slr2-mobile-menu__item');
-      this.mmLinks = this.elem.querySelectorAll('.slr2-mobile-menu__link');
-      this.mmClose = this.elem.querySelector('.slr2-mobile-menu__close');
-    }
-
-    events() {
-      //click link
-      this.mmLinks.forEach((menuLink) => {
-        menuLink.addEventListener('click', (e) => {
-          if (menuLink.classList.contains('i-link')) {
-            return;
-          }
-          e.preventDefault();
-          this.clickLink(menuLink);
-        });
-      });
-      //close
-      this.mmClose.addEventListener('click', (e) => {
-        e.preventDefault();
-        this.show();
-      });
-    }
-
-    clickLink(menuLink) {
-      const item = menuLink.closest('.slr2-mobile-menu__item');
-      if (!item.classList.contains('active')) {
-        //slide up all active items
-        this.elem
-          .querySelectorAll('.slr2-mobile-menu__item.active')
-          .forEach((activeItem) => {
-            this.itemActiveRemove(activeItem);
-          });
-      }
-
-      this.itemActiveToggle(item);
+      this.wrapper = this.elem.querySelector('.slr2-catalog-menu-wrapper');
     }
 
     toggle() {
-      !this.elem.classList.contains('slr2-mobile-menu--show')
+      !this.wrapper.classList.contains('slr2-slide-toggle--show')
         ? this.show()
         : this.hide();
     }
@@ -71,47 +26,19 @@
       //let the site know, that the new component is going to be shown
       const event = new CustomEvent('slr2NewComponentIsShown', {
         detail: {
-          name: 'mobile-menu',
+          name: 'menu',
         },
       });
       document.documentElement.dispatchEvent(event);
 
-      this.elem.classList.add('slr2-mobile-menu--show');
-      document.querySelector('body').classList.add('slr2-body--no-scroll');
-
-      //deactivate items
-      this.mmItems.forEach((item) => {
-        this.itemActiveRemove(item);
-      });
+      const header = document.querySelector('header');
+      this.wrapper.style.top =
+        header.getBoundingClientRect().top + header.clientHeight + 'px';
+      this.slideDown(this.wrapper);
     }
 
     hide() {
-      this.elem.classList.remove('slr2-mobile-menu--show');
-      document.querySelector('body').classList.remove('slr2-body--no-scroll');
-
-      //deactivate items
-      this.mmItems.forEach((item) => {
-        this.itemActiveRemove(item);
-      });
-    }
-
-    itemActiveAdd(item) {
-      if (!item.classList.contains('active')) {
-        item.classList.add('active');
-        this.slideDown(item.querySelector('.slr2-mobile-menu__sub'));
-      }
-    }
-
-    itemActiveRemove(item) {
-      if (item.classList.contains('active')) {
-        item.classList.remove('active');
-        this.slideUp(item.querySelector('.slr2-mobile-menu__sub'));
-      }
-    }
-
-    itemActiveToggle(item) {
-      item.classList.toggle('active');
-      this.slideToggle(item.querySelector('.slr2-mobile-menu__sub'));
+      this.slideUp(this.wrapper);
     }
 
     slideDown(block) {
@@ -183,17 +110,13 @@
   }
 
   async function fetchComponent() {
-    if (!window.matchMedia('(max-width: 1024px)').matches || fetchFlag) return;
-
-    fetchFlag = true;
-
-    const response = await fetch('../../components/mobile-menu/template.html');
+    const response = await fetch('../../components/catalog-menu/template.html');
     const result = await response.text();
 
     //загружаем и добавляем на страницу html, css
     //обёртка, чтобы не было видно html до загрузки стилей
     const div = document.createElement('div');
-    div.className = 'slr2-mobile-menu-component-container';
+    div.className = 'slr2-catalog-menu-component-container';
     div.style.position = 'absolute';
     div.style.top = '0';
     div.style.left = '0';
@@ -204,15 +127,15 @@
     div.style.zIndex = '-1';
 
     const elem = document.createElement('div');
-    elem.id = 'slr2MobileMenuElem';
+    elem.id = 'slr2CatalogMenuElem';
     elem.innerHTML = result;
 
     div.append(elem);
     document.querySelector('body').append(div);
 
     //добавляем экземпляр класса в глобальное пространство
-    window.seller2[componentObj.component] = new Slr2MobileMenuComponent(
-      document.getElementById('slr2MobileMenuElem')
+    window.seller2[componentObj.component] = new slr2CatalogMenuComponent(
+      document.getElementById('slr2CatalogMenuElem')
     );
 
     //вызываем событие при загрузке компонента,

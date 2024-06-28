@@ -62,23 +62,29 @@ window.seller2.toggleButtons = () => {
 };
 
 document.documentElement.addEventListener('slr2NewComponentIsShown', (e) => {
-  if (e.detail.name !== 'search') {
-    window.seller2.slr2SearchComponent.hide();
+  const name = e.detail.name;
+  const w = window.seller2;
+
+  if (name !== 'search' && w.slr2SearchComponent) {
+    w.slr2SearchComponent.hide();
   }
-  if (e.detail.name !== 'profile') {
-    window.seller2.slr2ProfileComponent.hide();
+  if (name !== 'profile' && w.slr2ProfileComponent) {
+    w.slr2ProfileComponent.hide();
   }
-  if (e.detail.name !== 'menu') {
-    window.seller2.slr2MenuComponent.hide();
+  if (name !== 'menu' && w.slr2MenuComponent) {
+    w.slr2MenuComponent.hide();
   }
-  if (e.detail.name !== 'mobile-menu') {
-    window.seller2.slr2MobileMenuComponent.hide();
+  if (name !== 'catalog-menu' && w.slr2CatalogMenuComponent) {
+    w.slr2CatalogMenuComponent.hide();
   }
-  if (e.detail.name !== 'basket') {
-    window.seller2.slr2BasketComponent.hide();
+  if (name !== 'mobile-menu' && w.slr2MobileMenuComponent) {
+    w.slr2MobileMenuComponent.hide();
   }
-  if (e.detail.name !== 'phone') {
-    window.seller2.slr2PhoneComponent.hide();
+  if (name !== 'basket' && w.slr2BasketComponent) {
+    w.slr2BasketComponent.hide();
+  }
+  if (name !== 'phone' && w.slr2PhoneComponent) {
+    w.slr2PhoneComponent.hide();
   }
 });
 

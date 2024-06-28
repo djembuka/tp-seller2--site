@@ -118,14 +118,14 @@
     div.append(elem);
     document.querySelector('body').append(div);
 
-    //вызываем событие при загрузке компонента,
-    //теперь на кнопку можно нажать
-    const event = new Event(componentObj.event);
-    document.documentElement.dispatchEvent(event);
-
     //добавляем экземпляр класса в глобальное пространство
     window.seller2[componentObj.component] = new Slr2SearchComponent(
       document.getElementById('slr2SearchElem')
     );
+
+    //вызываем событие при загрузке компонента,
+    //теперь на кнопку можно нажать
+    const event = new Event(componentObj.event);
+    document.documentElement.dispatchEvent(event);
   }
 })();
