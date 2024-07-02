@@ -60,8 +60,9 @@
 }
 /*Icons*/
 .slr2-header1__icons {
-  display: grid;
-  grid-template-columns: repeat(3, 32px);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   gap: 32px;
 }
 .slr2-header1__menu-icon,
@@ -192,9 +193,6 @@
 @media (min-width: 768px) {
   .slr2-header1__menu {
     display: flex;
-  }
-  .slr2-header1__icons {
-    grid-template-columns: repeat(4, 32px);
   }
   .slr2-header1__mobile-menu-icon {
     display: none;

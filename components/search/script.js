@@ -19,6 +19,8 @@
       this.init();
     }
 
+    documentClick(event) {}
+
     init() {
       this.wrapper.addEventListener('click', (e) => {
         e.preventDefault();

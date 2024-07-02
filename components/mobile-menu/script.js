@@ -47,6 +47,8 @@
       });
     }
 
+    documentClick(event) {}
+
     clickLink(menuLink) {
       const item = menuLink.closest('.slr2-mobile-menu__item');
       if (!item.classList.contains('active')) {

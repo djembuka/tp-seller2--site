@@ -13,7 +13,23 @@
   class slr2CatalogMenuComponent {
     constructor(elem) {
       this.elem = elem;
+      this.name = 'catalog-menu';
       this.wrapper = this.elem.querySelector('.slr2-catalog-menu-wrapper');
+    }
+
+    documentClick(event) {
+      if (
+        event.target.id === this.id ||
+        event.target.closest(`#${this.elem.id}`) ||
+        event.target.getAttribute('data-slr2toggle') === this.name ||
+        (event.target.closest(`[data-slr2toggle]`) &&
+          event.target
+            .closest(`[data-slr2toggle]`)
+            .getAttribute('data-slr2toggle') === this.name)
+      ) {
+        return;
+      }
+      this.hide();
     }
 
     toggle() {
@@ -56,6 +72,10 @@
         setTimeout(() => {
           block.style.height = height;
         }, 0);
+
+        setTimeout(() => {
+          block.classList.add('slr2-slide-toggle--animate');
+        }, 500);
       }
     }
 
@@ -65,6 +85,7 @@
       }
       if (block.classList.contains('slr2-slide-toggle--show')) {
         block.style.height = '0px';
+        block.classList.remove('slr2-slide-toggle--animate');
 
         block.addEventListener(
           'transitionend',
@@ -93,8 +114,13 @@
         setTimeout(() => {
           block.style.height = height;
         }, 0);
+
+        setTimeout(() => {
+          block.classList.add('slr2-slide-toggle--animate');
+        }, 500);
       } else {
         block.style.height = '0px';
+        block.classList.remove('slr2-slide-toggle--animate');
 
         block.addEventListener(
           'transitionend',

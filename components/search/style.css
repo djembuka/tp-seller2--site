@@ -142,6 +142,11 @@
   align-items: center;
   margin-bottom: 8px;
 }
+#slr2SearchElem .slr2-search-result-item span,
+#slr2SearchElem .slr2-search-result-page span,
+#slr2SearchElem .slr2-search-result-all span {
+  display: block;
+}
 #slr2SearchElem .slr2-search-result-img {
   width: 64px;
   height: 64px;

@@ -13,7 +13,23 @@
   class Slr2ProfileComponent {
     constructor(elem) {
       this.elem = elem;
+      this.name = 'profile';
       this.wrapper = this.elem.querySelector('.slr2-profile-wrapper');
+    }
+
+    documentClick(event) {
+      if (
+        event.target.id === this.id ||
+        event.target.closest(`#${this.elem.id}`) ||
+        event.target.getAttribute('data-slr2toggle') === this.name ||
+        (event.target.closest(`[data-slr2toggle]`) &&
+          event.target
+            .closest(`[data-slr2toggle]`)
+            .getAttribute('data-slr2toggle') === this.name)
+      ) {
+        return;
+      }
+      this.hide();
     }
 
     toggle() {

@@ -1,4 +1,20 @@
 window.seller2 = {};
+window.seller2.componentNames = [
+  'search',
+  'profile',
+  'menu',
+  'catalog-menu',
+  'mobile-menu',
+  'basket',
+  'phone',
+];
+window.seller2.utils = {};
+window.seller2.utils.className = (name) => {
+  return name
+    .split('-')
+    .map((n) => n.substring(0, 1).toUpperCase() + n.substring(1))
+    .join('');
+};
 
 window.seller2.toggleButtons = () => {
   //собираем уникальные значения атрибутов slr2toggle
@@ -11,8 +27,8 @@ window.seller2.toggleButtons = () => {
   const icons = Array.from(components).map((c) => {
     return {
       name: c,
-      event: `slr2${className(c)}Loaded`,
-      component: `slr2${className(c)}Component`,
+      event: `slr2${window.seller2.utils.className(c)}Loaded`,
+      component: `slr2${window.seller2.utils.className(c)}Component`,
       method: 'toggle',
     };
   });
@@ -27,13 +43,6 @@ window.seller2.toggleButtons = () => {
       });
     }
   });
-
-  function className(elem) {
-    return elem
-      .split('-')
-      .map((n) => n.substring(0, 1).toUpperCase() + n.substring(1))
-      .join('');
-  }
 
   function onComponentLoaded(iconObj) {
     //находим все элементы, работающие с компонентом
@@ -62,30 +71,30 @@ window.seller2.toggleButtons = () => {
 };
 
 document.documentElement.addEventListener('slr2NewComponentIsShown', (e) => {
-  const name = e.detail.name;
+  // const name = e.detail.name;
+  // const w = window.seller2;
+  // window.seller2.componentNames.forEach((cName) => {
+  //   const componentName = `slr2${window.seller2.utils.className(
+  //     cName
+  //   )}Component`;
+  //   if (name !== cName && w[componentName]) {
+  //     w[componentName].hide();
+  //   }
+  // });
+});
+
+document.documentElement.addEventListener('click', (e) => {
   const w = window.seller2;
 
-  if (name !== 'search' && w.slr2SearchComponent) {
-    w.slr2SearchComponent.hide();
-  }
-  if (name !== 'profile' && w.slr2ProfileComponent) {
-    w.slr2ProfileComponent.hide();
-  }
-  if (name !== 'menu' && w.slr2MenuComponent) {
-    w.slr2MenuComponent.hide();
-  }
-  if (name !== 'catalog-menu' && w.slr2CatalogMenuComponent) {
-    w.slr2CatalogMenuComponent.hide();
-  }
-  if (name !== 'mobile-menu' && w.slr2MobileMenuComponent) {
-    w.slr2MobileMenuComponent.hide();
-  }
-  if (name !== 'basket' && w.slr2BasketComponent) {
-    w.slr2BasketComponent.hide();
-  }
-  if (name !== 'phone' && w.slr2PhoneComponent) {
-    w.slr2PhoneComponent.hide();
-  }
+  window.seller2.componentNames.forEach((cName) => {
+    const componentName = `slr2${window.seller2.utils.className(
+      cName
+    )}Component`;
+
+    if (w[componentName]) {
+      w[componentName].documentClick(e);
+    }
+  });
 });
 
 window.addEventListener('DOMContentLoaded', () => {

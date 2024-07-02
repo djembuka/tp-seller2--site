@@ -26,6 +26,8 @@
       });
     }
 
+    documentClick(event) {}
+
     toggle() {
       !this.elem.classList.contains('slr2-phone--show')
         ? this.show()
