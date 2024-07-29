@@ -6,9 +6,7 @@
     method: 'toggle',
   };
 
-  setTimeout(() => {
-    fetchComponent();
-  }, 2000);
+  fetchComponent();
 
   class Slr2BasketComponent {
     constructor(elem) {
@@ -76,16 +74,26 @@
     }
 
     async updateCount() {
-      const response = await fetch('../../components/basket/count.json');
-      const result = await response.json();
-
-      if (result.status === 'y') {
-        this.count = result.data.count;
-
-        const basketEvent = new CustomEvent('slr2BasketCountUpdated', {
-          detail: { count: this.count },
-        });
-        document.documentElement.dispatchEvent(basketEvent);
+      if (window.BX) {
+        BX.ajax
+          .runComponentAction('twinpx:small-basket', 'count', {
+            mode: 'class',
+            method: 'GET',
+            data: {},
+          })
+          .then(
+            (response) => {
+              this.count = response.data.count;
+              const basketEvent = new CustomEvent('slr2BasketCountUpdated', {
+                detail: { count: this.count },
+              });
+              document.documentElement.dispatchEvent(basketEvent);
+            },
+            (error) => {
+              //сюда будут приходить все ответы, у которых status !== 'success'
+              console.log(error);
+            }
+          );
       }
 
       return Promise;
