@@ -39,6 +39,8 @@
     }
 
     show() {
+      this.styleContainer.removeAttribute('style');
+
       //let the site know, that the new component is going to be shown
       const event = new CustomEvent('slr2NewComponentIsShown', {
         detail: {
@@ -83,19 +85,25 @@
       if (!block.classList.contains('slr2-slide-toggle')) {
         block.classList.add('slr2-slide-toggle');
       }
-      if (block.classList.contains('slr2-slide-toggle--show')) {
-        block.style.height = '0px';
-        block.classList.remove('slr2-slide-toggle--animate');
 
-        block.addEventListener(
-          'transitionend',
-          () => {
-            block.classList.remove('slr2-slide-toggle--show');
-          },
-          {
-            once: true,
-          }
-        );
+      if (block.classList.contains('slr2-slide-toggle--show')) {
+        if (block.style.height === '0px') {
+          block.classList.remove('slr2-slide-toggle--show');
+          block.classList.remove('slr2-slide-toggle--animate');
+        } else {
+          block.style.height = '0px';
+          block.classList.remove('slr2-slide-toggle--animate');
+
+          block.addEventListener(
+            'transitionend',
+            () => {
+              block.classList.remove('slr2-slide-toggle--show');
+            },
+            {
+              once: true,
+            }
+          );
+        }
       }
     }
 
@@ -107,30 +115,31 @@
         block.classList.add('slr2-slide-toggle--show');
         block.style.height = 'auto';
 
-        var height = block.clientHeight + 'px';
+        let height = block.clientHeight + 'px';
 
         block.style.height = '0px';
 
         setTimeout(() => {
           block.style.height = height;
         }, 0);
-
-        setTimeout(() => {
-          block.classList.add('slr2-slide-toggle--animate');
-        }, 500);
       } else {
-        block.style.height = '0px';
-        block.classList.remove('slr2-slide-toggle--animate');
+        if (block.style.height === '0px') {
+          block.classList.remove('slr2-slide-toggle--show');
+          block.classList.remove('slr2-slide-toggle--animate');
+        } else {
+          block.style.height = '0px';
+          block.classList.remove('slr2-slide-toggle--animate');
 
-        block.addEventListener(
-          'transitionend',
-          () => {
-            block.classList.remove('slr2-slide-toggle--show');
-          },
-          {
-            once: true,
-          }
-        );
+          block.addEventListener(
+            'transitionend',
+            () => {
+              block.classList.remove('slr2-slide-toggle--show');
+            },
+            {
+              once: true,
+            }
+          );
+        }
       }
     }
   }
@@ -160,9 +169,12 @@
     document.querySelector('body').append(div);
 
     //добавляем экземпляр класса в глобальное пространство
+    window.seller2 = window.seller2 || {};
     window.seller2[componentObj.component] = new slr2CatalogMenuComponent(
       document.getElementById('slr2CatalogMenuElem')
     );
+
+    window.seller2[componentObj.component].styleContainer = div;
 
     //вызываем событие при загрузке компонента,
     //теперь на кнопку можно нажать

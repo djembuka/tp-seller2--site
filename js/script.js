@@ -1,4 +1,4 @@
-window.seller2 = {};
+window.seller2 = window.seller2 || {};
 window.seller2.componentNames = [
   'search',
   'profile',

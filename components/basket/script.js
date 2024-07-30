@@ -42,6 +42,8 @@
     }
 
     show() {
+      this.styleContainer.removeAttribute('style');
+
       //let the site know, that the new component is going to be shown
       const event = new CustomEvent('slr2NewComponentIsShown', {
         detail: {
@@ -73,40 +75,52 @@
       this.wrapper.classList.remove('slr2-basket--loaded');
     }
 
-    async updateCount() {
-      if (window.BX) {
+    updateCount() {
+      if (!window.BX) return;
+
+      const th = this;
+      BX.ajax
+        .runComponentAction('twinpx:small-basket', 'count', {
+          mode: 'class',
+          method: 'GET',
+          data: {},
+        })
+        .then(
+          (response) => {
+            th.count = response.data.count;
+            const basketEvent = new CustomEvent('slr2BasketCountUpdated', {
+              detail: { count: th.count },
+            });
+            document.documentElement.dispatchEvent(basketEvent);
+          },
+          (error) => {
+            //сюда будут приходить все ответы, у которых status !== 'success'
+            console.log(error);
+          }
+        );
+
+      return Promise;
+    }
+
+    loadContent() {
+      return new Promise((res) => {
+        if (!window.BX) return;
+
         BX.ajax
-          .runComponentAction('twinpx:small-basket', 'count', {
+          .runComponentAction('twinpx:small-basket', 'load', {
             mode: 'class',
             method: 'GET',
-            data: {},
           })
           .then(
             (response) => {
-              this.count = response.data.count;
-              const basketEvent = new CustomEvent('slr2BasketCountUpdated', {
-                detail: { count: this.count },
-              });
-              document.documentElement.dispatchEvent(basketEvent);
+              let result = response.data.html;
+              res(result);
             },
             (error) => {
               //сюда будут приходить все ответы, у которых status !== 'success'
               console.log(error);
             }
           );
-      }
-
-      return Promise;
-    }
-
-    loadContent() {
-      return new Promise(async (res) => {
-        let response = await fetch('../../components/basket/load.html');
-        let result = await response.text();
-
-        setTimeout(() => {
-          res(result);
-        }, 1000);
       });
     }
 
@@ -132,7 +146,7 @@
         block.classList.add('slr2-slide-toggle--show');
         block.style.height = 'auto';
 
-        var height = block.clientHeight + 'px';
+        let height = block.clientHeight + 'px';
 
         block.style.height = '0px';
 
@@ -146,18 +160,23 @@
       if (!block.classList.contains('slr2-slide-toggle')) {
         block.classList.add('slr2-slide-toggle');
       }
-      if (block.classList.contains('slr2-slide-toggle--show')) {
-        block.style.height = '0px';
 
-        block.addEventListener(
-          'transitionend',
-          () => {
-            block.classList.remove('slr2-slide-toggle--show');
-          },
-          {
-            once: true,
-          }
-        );
+      if (block.classList.contains('slr2-slide-toggle--show')) {
+        if (block.style.height === '0px') {
+          block.classList.remove('slr2-slide-toggle--show');
+        } else {
+          block.style.height = '0px';
+
+          block.addEventListener(
+            'transitionend',
+            () => {
+              block.classList.remove('slr2-slide-toggle--show');
+            },
+            {
+              once: true,
+            }
+          );
+        }
       }
     }
 
@@ -169,7 +188,7 @@
         block.classList.add('slr2-slide-toggle--show');
         block.style.height = 'auto';
 
-        var height = block.clientHeight + 'px';
+        let height = block.clientHeight + 'px';
 
         block.style.height = '0px';
 
@@ -177,53 +196,76 @@
           block.style.height = height;
         }, 0);
       } else {
-        block.style.height = '0px';
+        if (block.style.height === '0px') {
+          block.classList.remove('slr2-slide-toggle--show');
+        } else {
+          block.style.height = '0px';
 
-        block.addEventListener(
-          'transitionend',
-          () => {
-            block.classList.remove('slr2-slide-toggle--show');
-          },
-          {
-            once: true,
-          }
-        );
+          block.addEventListener(
+            'transitionend',
+            () => {
+              block.classList.remove('slr2-slide-toggle--show');
+            },
+            {
+              once: true,
+            }
+          );
+        }
       }
     }
   }
 
-  async function fetchComponent() {
-    const response = await fetch('../../components/basket/template.html');
-    const result = await response.text();
+  function fetchComponent() {
+    const th = this;
 
     //загружаем и добавляем на страницу html, css
     //обёртка, чтобы не было видно html до загрузки стилей
-    const div = document.createElement('div');
-    div.className = 'slr2-basket-component-container';
-    div.style.position = 'absolute';
-    div.style.top = '0';
-    div.style.left = '0';
-    div.style.width = '0';
-    div.style.height = '0';
-    div.style.overflow = 'hidden';
-    div.style.opacity = '0';
-    div.style.zIndex = '-1';
+    if (!window.BX) return;
 
-    const elem = document.createElement('div');
-    elem.id = 'slr2BasketElem';
-    elem.innerHTML = result;
+    BX.ajax
+      .runComponentAction('twinpx:small-basket', 'init', {
+        mode: 'class',
+        method: 'GET',
+      })
+      .then(
+        (response) => {
+          const result = response.data.html;
 
-    div.append(elem);
-    document.querySelector('body').append(div);
+          const div = document.createElement('div');
+          div.className = 'slr2-basket-component-container';
+          div.style.position = 'absolute';
+          div.style.top = '0';
+          div.style.left = '0';
+          div.style.width = '0';
+          div.style.height = '0';
+          div.style.overflow = 'hidden';
+          div.style.opacity = '0';
+          div.style.zIndex = '-1';
 
-    //добавляем экземпляр класса в глобальное пространство
-    window.seller2[componentObj.component] = new Slr2BasketComponent(
-      document.getElementById('slr2BasketElem')
-    );
+          const elem = document.createElement('div');
+          elem.id = 'slr2BasketElem';
+          elem.innerHTML = result;
 
-    //вызываем событие при загрузке компонента,
-    //теперь на кнопку можно нажать
-    const event = new Event(componentObj.event);
-    document.documentElement.dispatchEvent(event);
+          div.append(elem);
+          document.querySelector('body').append(div);
+
+          //добавляем экземпляр класса в глобальное пространство
+          window.seller2 = window.seller2 || {};
+          window.seller2[componentObj.component] = new Slr2BasketComponent(
+            document.getElementById('slr2BasketElem')
+          );
+
+          window.seller2[componentObj.component].styleContainer = div;
+
+          //вызываем событие при загрузке компонента,
+          //теперь на кнопку можно нажать
+          const event = new Event(componentObj.event);
+          document.documentElement.dispatchEvent(event);
+        },
+        (error) => {
+          //сюда будут приходить все ответы, у которых status !== 'success'
+          console.log(error);
+        }
+      );
   }
 })();

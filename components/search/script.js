@@ -79,6 +79,8 @@
     }
 
     show() {
+      this.styleContainer.removeAttribute('style');
+
       //let the site know, that the new component is going to be shown
       const event = new CustomEvent('slr2NewComponentIsShown', {
         detail: {
@@ -121,9 +123,12 @@
     document.querySelector('body').append(div);
 
     //добавляем экземпляр класса в глобальное пространство
+    window.seller2 = window.seller2 || {};
     window.seller2[componentObj.component] = new Slr2SearchComponent(
       document.getElementById('slr2SearchElem')
     );
+
+    window.seller2[componentObj.component].styleContainer = div;
 
     //вызываем событие при загрузке компонента,
     //теперь на кнопку можно нажать
