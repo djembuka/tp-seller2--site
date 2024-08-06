@@ -23,6 +23,7 @@
   width: 100%;
   height: var(--slr2-big-gallery-height);
   object-fit: cover;
+  display: block;
 }
 .slr2-big-gallery .swiper-lazy-preloader {
   border-width: 2px;
